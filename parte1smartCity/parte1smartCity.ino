@@ -485,7 +485,22 @@ void MEF_Semaforos() {
 }
 
 
+void displayInfo(){
 
+      lcd.setCursor(0, 0);
+      long int carrosActuales=CNYREAD1+CNYREAD2+CNYREAD3+CNYREAD4+CNYREAD5+CNYREAD6;
+      lcd.print("Congestion Actual "+String(carrosActuales));
+      lcd.setCursor(0, 1);
+      lcd.print("Calle libre "+String(CNYREAD1+CNYREAD2+CNYREAD3));
+      lcd.setCursor(0, 2);
+      lcd.print("Calle tunel "+String(CNYREAD4+CNYREAD5+CNYREAD6));
+      //lcd.setCursor(0, 1);
+      //lcd.print("Hello World2");
+      //delay(2000);  //Wait 2 seconds
+      //lcd.clear();
+        
+  
+}
 
  
 
@@ -520,4 +535,5 @@ void loop() {
   MEF_CNY5();
   MEF_CNY6();
   MEF_Semaforos();
+  displayInfo();
 }
