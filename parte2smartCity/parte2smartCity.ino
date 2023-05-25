@@ -509,7 +509,12 @@ void serialInput(){
     clima = Serial.read(); // read the incoming byte:
     if (clima != -1) { // -1 means no data is available
       lcd.setCursor(0, 3); // set cursor to first row
-      lcd.print(clima); // print out to LCD
+      if(clima==0){
+        lcd.print("Cielo Despejado"); // print out to LCD
+      }else if(clima==1){
+        lcd.print("Lloviendo");
+       }
+      
       tt=2000+(clima*4000);
     }
   }
