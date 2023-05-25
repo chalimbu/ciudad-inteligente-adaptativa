@@ -101,7 +101,7 @@ void MEF_DiaNoche() {
 int eSaludable = SALUDABLE;
 bool saludable = 1;
 const unsigned long TCO2 = 2000; // Constante para el tiempo de apagado   1000 ms
-const unsigned long LIMITE_CO2 = 10; //TODO cambiar a 7 PARA DEMOSTRACIONES
+const unsigned long LIMITE_CO2 = 9; //TODO cambiar a 7 PARA DEMOSTRACIONES
 unsigned long trsalud;
 
 void MEF_Saludable() {
@@ -405,7 +405,7 @@ void setSemaforo2(int rojo,int amarillo,int verde){
 #define ESEM4 3
 #define ESEM5 4
 
-const unsigned long tt = 2000; // tiempos entre trancisiones intermedias
+long tt = 2000; // tiempos entre trancisiones intermedias
 int eSemaforos = ESEM1;
 unsigned long trsSemaforo;
 
@@ -502,6 +502,20 @@ void displayInfo(){
   
 }
 
+
+byte clima = 0; //0 para despejado, 1 para lloviendo
+void serialInput(){
+  if (Serial.available() > 0) {    
+    clima = Serial.read(); // read the incoming byte:
+    if (clima != -1) { // -1 means no data is available
+      lcd.setCursor(0, 3); // set cursor to first row
+      lcd.print(clima); // print out to LCD
+      tt=2000+(clima*4000);
+    }
+  }
+}
+
+
  
 
 void setup() {
@@ -509,6 +523,9 @@ void setup() {
 
    //Communications
   Serial.begin(9600); //Start Serial communications with computer via Serial0 (TX0 RX0) at 9600 bauds
+  while (!Serial) {
+    ; // wait for serial port to connect.
+  }
   
   Serial.println("In order to test Analog Sensors and Actuators, send the following commands through the Serial Monitor:");
   Serial.println("A: Tests LDR1 Sensor");
@@ -536,4 +553,5 @@ void loop() {
   MEF_CNY6();
   MEF_Semaforos();
   displayInfo();
+  serialInput();
 }
