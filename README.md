@@ -1,4 +1,5 @@
-proyecto para la clase sistemas autoadpativos
+repositorio: https://github.com/chalimbu/ciudad-inteligente-adaptativa
+
 
 entrega 1: hacer uso de todos los sensores y actuadores
 foto de la maqueta/sus sensores actuadores en marcacion-sensores.png

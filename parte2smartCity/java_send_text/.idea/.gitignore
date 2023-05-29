@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\copia\estudio\especializacion-eafit\sistemas-autoadaptativos\entrega-final\parte2smartCity\arduino-java-serial-communication\example01_print_text_on_LCD_module\java_send_text\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
